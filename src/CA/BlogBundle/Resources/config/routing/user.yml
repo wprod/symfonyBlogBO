@@ -1,0 +1,38 @@
+# user_index:
+#     path:     /
+#     defaults: { _controller: "CABlogBundle:User:index" }
+#     methods:  GET
+
+user_show:
+    path:     /list
+    defaults: { _controller: "CABlogBundle:User:list" }
+    methods:  GET
+
+user_list_posts:
+    path:     /{id}/show
+    defaults: { _controller: "CABlogBundle:User:listPosts" }
+    requirements:
+        id: \d+
+    methods:  GET
+
+user_list_posts_bis:
+    path:     /{username}/show
+    defaults: { _controller: "CABlogBundle:User:listPostsUsername" }
+    requirements:
+        username: \w+
+    methods:  GET
+
+user_new:
+    path:     /register
+    defaults: { _controller: "CABlogBundle:User:register" }
+    methods:  [GET, POST]
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CABlogBundle:User:edit" }
+    methods:  [GET, POST]
+
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CABlogBundle:User:delete" }
+    methods:  DELETE

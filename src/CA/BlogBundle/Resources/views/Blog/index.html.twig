@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Welcome to the awesome blog <3{% endblock %}
+
+{% block body %}
+    {% for post in tenLastPost %}
+        <div>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content|length < 50 ? post.content : post.content|slice(0, 50) ~ '...' }}</p>
+            <em>{{ post.created|date("d-m-Y") }}</em>
+            <br><bR>
+            {% if not post.category.empty %}
+                <b>Categories :</b>
+                {% for item in post.category %}
+                    {{ item.name }}
+                    {% if not loop.last %}
+                        /
+                    {% endif %}
+                {% endfor %}
+                <bR>
+            {% endif %}
+            <br>
+            <a href="{{ path('post_show', {"id" : post.id}) }}">Read more</a>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock %}

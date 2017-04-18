@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>Posts of user</h1>
+  {% for post in listPosts %}
+    <div class=”post”>
+      <p><a href=”{{ path('post_show', { 'id': post.id }) }}”>{{ post.title }} </a>{{post.created|date('Y-m-d H:i:s')}}</p>
+      <p>{{ post.content }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

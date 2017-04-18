@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <p><a href="{{ path('ca_blog_homepage') }}">Acces to Home.</a></p>
+        <p><a href="{{ path('post') }}">Acces to Blog.</a></p>
+        <p><a href="{{ path('user_show') }}">Acces to Users.</a></p>
+
+        <p><a href="/cat/Culture">Category Culture</a></p>
+        <p><a href="/cat/Sport">Category Sport</a></p>
+        <p><a href="/cat/Politique ">Category Politique</a></p>
+        <p><a href="/cat/Vacances">Category Vacances</a></p>
+
+
+        {% if app.user %}
+          <p><a href="{{ path('logout') }}">Log-out</a></p>
+        {% else %}
+          <p><a href="{{ path('login') }}">Log-in</a></p>
+            <p><a href="{{ path('user_new') }}">Register.</a></p>
+        {% endif %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

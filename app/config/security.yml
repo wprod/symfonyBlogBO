@@ -1,0 +1,47 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        CA\BlogBundle\Entity\User: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_BLOGGER
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+      main:
+        entity:
+          class: CA\BlogBundle\Entity\User
+          property: username
+
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            anonymous: ~
+            provider: main
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: /post
+            logout:
+                path:       logout
+                target:     /index
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+            # activate different ways to authenticate
+
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            #form_login: ~

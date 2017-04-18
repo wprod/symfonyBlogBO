@@ -1,3 +1,4 @@
-# symfonyBlogBO
+coding_academy
+==============
 
-Role User / Relation ManyToMany Bidirectional / Fixtures / @ORM / Form EntityType::class ...
+A Symfony project created on April 11, 2017, 10:20 am.
