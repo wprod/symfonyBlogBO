@@ -1,1 +1,3 @@
 # symfonyBlogBO
+
+Role User / Relation ManyToMany Bidirectional / Fixtures / @ORM / Form EntityType::class ...
